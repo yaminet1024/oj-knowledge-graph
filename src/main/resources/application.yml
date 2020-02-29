@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: yami1574150143
+    url: jdbc:mysql://127.0.0.1:3306/ichangda?characterEncoding=UTF-8&serverTimezone=GMT
+    dbcp2:
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      validation-query: ·
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+  redis:
+    host: 127.0.0.1
+    password: 1574150143
+    port: 6379
+    database: 0
+    jedis:
+      pool:
+        max-active: 100
+        # 连接池最大阻塞等待时间,-1表示没有限制
+        max-wait: -1ms
+        min-idle: 10
+        max-idle: 20
+    # 连接超时 templates
+    timeout: 1000ms
+
+  data:
+    neo4j:
+      uri: bolt://localhost:7687
+      username: neo4j
+      password: neo4j
