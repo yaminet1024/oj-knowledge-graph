@@ -27,6 +27,11 @@ public class Problem {
      */
     private String title;
 
+    /**
+     * html格式化文本
+     */
+    private String contentHtml;
+
 //    /**
 //     * 题目难度
 //     */

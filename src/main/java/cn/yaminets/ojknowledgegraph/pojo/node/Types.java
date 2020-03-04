@@ -27,7 +27,7 @@ public class Types {
     /**
      * 英文标签
      */
-    private int tagInt;
+    private String tagEN;
 
 
 

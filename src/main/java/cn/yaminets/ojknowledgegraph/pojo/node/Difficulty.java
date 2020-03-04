@@ -18,7 +18,7 @@ public class Difficulty {
     private Long id;
 
     /**
-     * 难度英文表示
+     * 难度数字表示
      */
     private int difficulty;
 

@@ -1,0 +1,13 @@
+//拿tag的中文名称
+var request = window.indexedDB.open("lfeConfig")
+request.onsuccess = function(event) {
+    db = event.target.result;
+    db.transaction("keyvaluepairs").objectStore("keyvaluepairs").get("tags").onsuccess = function(event) {
+       var dataList = [];
+       for(let i=1;i<337;i++){
+          event.target.result[i].tagInt = i;
+          dataList.push(event.target.result[i]);
+       }
+       console.log(JSON.stringify(dataList))
+    };
+};
