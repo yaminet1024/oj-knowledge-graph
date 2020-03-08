@@ -8,6 +8,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.List;
+import java.util.Set;
 
 @NodeEntity
 @Data
@@ -31,6 +32,13 @@ public class Problem {
      * html格式化文本
      */
     private String contentHtml;
+
+
+    /**
+     * 问题的答案
+     */
+    @Relationship(type = "题解",direction = Relationship.OUTGOING)
+    private Set<Answer> answers;
 
 //    /**
 //     * 题目难度

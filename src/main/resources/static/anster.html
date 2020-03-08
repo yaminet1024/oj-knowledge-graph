@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>P1000 超级玛丽游戏 题解</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="csrf-token" content="1583731037:Y6W2lX0F0KPrwtMGSdxX0+z7dH74CJlqrJes3CzkQBU=">
+    <link rel="stylesheet" href="https://cdn.luogu.com.cn/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="https://cdn.luogu.com.cn/css/katex.min.css"/>
+    <link rel="stylesheet" href="https://cdn.luogu.com.cn/css/luogu3.css?ver=20190102">
+    <link rel="stylesheet" href="https://cdn.luogu.com.cn/css/highlight_tomorrow.css">
+    <link rel="stylesheet" href="https://cdn.luogu.com.cn/markdown-palettes/markdown-palettes.css?ver=20190219">
+    <script src="https://cdn.luogu.com.cn/js/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.luogu.com.cn/js/luogu3_pre.js?ver=20190101"></script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+    <link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20200307-1">
+    <script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentUser%22%3Anull%2C%22currentTemplate%22%3A%22Excited%22%2C%22currentData%22%3A%7B%22shortHeader%22%3Afalse%2C%22pageName%22%3A%22%5Cu67e5%5Cu770b%5Cu9898%5Cu89e3%22%2C%22title%22%3A%22P1000%20%5Cu8d85%5Cu7ea7%5Cu739b%5Cu4e3d%5Cu6e38%5Cu620f%20%5Cu9898%5Cu89e3%22%7D%7D"));window._feConfigVersion=1583643669;</script>
+    <script>window._release = '20200307-1';</script>
+    <script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20200307-1" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app"></div>
+<script>
+    function scrollToId (id) {
+        $('html, body').animate({
+            scrollTop: ($('#' + id).offset().top)
+        }, 500);
+    }
+</script>
+<style>
+    .lg-toolbar {
+        display: none;
+    }
+
+    #app-old{
+        display: block;
+        margin-bottom: 2em;
+        /* position: relative;*/
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    code {
+        font-family: monospace, "Courier New";
+    }
+
+</style>
+<div id="app-old">
+
+    <style>
+        .voted {
+            color: #0a628f;
+        }
+        .vote {
+            cursor: pointer;
+        }
+        .fadeout {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 6em;
+            background-image: linear-gradient(
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 1) 90%
+            );
+        }
+        .comment-show-more {
+            position: absolute;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(14, 144, 210, 0.7);
+        }
+    </style>
+    <div class="lg-toolbar" data-am-sticky>
+        <h1>P1000 超级玛丽游戏 题解</h1>
+    </div>
+    <div class="am-g lg-main-content">
+        <div class="am-u-md-4 am-u-lg-3 lg-right am-hide-sm">
+            <section class="am-panel am-panel-default lg-summary" style="padding-bottom: 16px;">
+                <div class="lg-summary-content">
+                    <ul class="am-list am-list-static lg-summary-list">
+                        <li>
+                            <strong>题目</strong>
+                            <span class="lg-right"><a class='colored'  href="/problemnew/show/P1000"  target="_blank"><b>P1000</b> 超级玛丽游戏</a></span>
+                        </li>
+                        <li>
+                            <strong>总数量</strong>
+                            <span class="lg-right">15 篇</span>
+                        </li>
+                    </ul><br>
+                </div>
+            </section>
+        </div>
+        <div class="am-u-md-8 am-u-lg-9 lg-right">
+            <div class="lg-content-left">
+                <div class="lg-article am-g">
+                    <h2><b>以下题解仅供学习参考使用。</b></h2>
+                    <p>抄袭、复制题解，以达到刷AC率/AC数量或其他目的的行为，在洛谷是严格禁止的。</p>
+                    <p>洛谷非常重视<b>学术诚信</b>。此类行为将会导致您成为<b class="lg-fg-brown">作弊者</b>。具体细则请查看<a href="/blog/luogu/social-rules">洛谷社区规则</a>。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-g lg-main-content solution-block" data-blog-id="17186">
+        <div class="am-u-md-4 am-u-lg-3 lg-right am-hide-sm">
+            <section class="am-panel am-panel-default lg-summary">
+                <div class="lg-summary-content">
+                    <h2>
+                        评论
+                        <span class="lg-right">
+                                <a class="comment-page-switch" data-forward="-1"><i class="am-icon-chevron-left" style="display: none;"></i></a>
+                                <a class="comment-page-switch" data-forward="1"><i class="am-icon-chevron-right" style="display: none;"></i></a>
+                            </span>
+                    </h2>
+                    <ul class="am-list am-list-static am-list-border am-list-striped"
+                        style="position: relative;" data-comment-count="187">
+                        <li>
+                            <span class="lg-small">凌云</span><br>
+                            完美！前排资瓷啦
+                            ltt棒棒哒
+                            某米还好吃吧：）
+                        </li>
+                        <li>
+                            <span class="lg-small">凌云</span><br>
+                            好经典的题啊
+                        </li>
+                        <li>
+                            <span class="lg-small">lin_toto</span><br>
+                            好吃
+                        </li>
+                        <li>
+                            <span class="lg-small">泡椒：极裂</span><br>
+                            有c++吗
+                        </li>
+                        <li>
+                            <span class="lg-small">无晴</span><br>
+                            是只有C语言可以写多行字符串嘛
+                        </li>
+                        <li>
+                            <span class="lg-small">凌云</span><br>
+                            @4楼：这也是c++
+                        </li>
+                        <li>
+                            <span class="lg-small">ILXC__SL</span><br>
+                            这种做法...
+
+                        </li>
+                        <li>
+                            <span class="lg-small">John_05</span><br>
+                            #include&lt;bits/stdc++.h&gt;
+                            using namespace std;
+
+                            int main() {
+                            cout&lt;&lt;&quot;                ********&quot;&lt;&lt;endl;…………
+                        </li>
+                        <li>
+                            <span class="lg-small">zhaoting888666</span><br>
+                            好吧
+                        </li>
+                        <li>
+                            <span class="lg-small">Loner_Knowledge</span><br>
+                            如果改用putchar会不会快一点呢？
+                        </li>
+                        <div class="fadeout" style="display: none;">
+                            <div class="comment-show-more"> 展开更多</div>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="am-u-md-8 am-u-lg-9 lg-right">
+            <div class="lg-content-left">
+                <div class="lg-article am-g" style="min-height: 350px;">
+                        <span class="lg-small">作者: <a class='lg-fg-purple lg-bold' href="/user/256"  target="_blank">lin_toto</a>&nbsp;<a class="sb_amazeui" target="_blank" href="/discuss/show/142324"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="#3498db" style="margin-bottom: -3px;"><path d="M16 8C16 6.84375 15.25 5.84375 14.1875 5.4375C14.6562 4.4375 14.4688 3.1875 13.6562 2.34375C12.8125 1.53125 11.5625 1.34375 10.5625 1.8125C10.1562 0.75 9.15625 0 8 0C6.8125 0 5.8125 0.75 5.40625 1.8125C4.40625 1.34375 3.15625 1.53125 2.34375 2.34375C1.5 3.1875 1.3125 4.4375 1.78125 5.4375C0.71875 5.84375 0 6.84375 0 8C0 9.1875 0.71875 10.1875 1.78125 10.5938C1.3125 11.5938 1.5 12.8438 2.34375 13.6562C3.15625 14.5 4.40625 14.6875 5.40625 14.2188C5.8125 15.2812 6.8125 16 8 16C9.15625 16 10.1562 15.2812 10.5625 14.2188C11.5938 14.6875 12.8125 14.5 13.6562 13.6562C14.4688 12.8438 14.6562 11.5938 14.1875 10.5938C15.25 10.1875 16 9.1875 16 8ZM11.4688 6.625L7.375 10.6875C7.21875 10.8438 7 10.8125 6.875 10.6875L4.5 8.3125C4.375 8.1875 4.375 7.96875 4.5 7.8125L5.3125 7C5.46875 6.875 5.6875 6.875 5.8125 7.03125L7.125 8.34375L10.1562 5.34375C10.3125 5.1875 10.5312 5.1875 10.6562 5.34375L11.4688 6.15625C11.5938 6.28125 11.5938 6.5 11.4688 6.625Z"></path></svg></a>&nbsp;<span class="am-badge am-radius lg-bg-purple">专属头衔</span>
+                            更新时间: 2017-12-09 23:33
+                        </span>
+                    <a class="lg-small" href="https://t.blog.luogu.org/solution-p1000" target="_blank">&nbsp在Ta的博客查看</a>
+                    <a class="lg-small" style="cursor:pointer" name="report" data-report-id="17186">
+                        举报
+                    </a>
+
+                    <span data-blog-id="17186" data-vote-value="-1"
+                          class="thumb-down am-icon-thumbs-o-down lg-right vote ">
+                        </span>
+                    <span class="lg-right">&nbsp;&nbsp;</span>
+                    <span data-blog-id="17186" class="lg-right vote-count">1385</span>
+                    <span class="lg-right">&nbsp;</span>
+                    <span data-blog-id="17186" data-vote-value="1"
+                          class="thumb-up am-icon-thumbs-o-up lg-right vote ">
+                        </span>
+                    <hr>
+                    <p>介绍一种 C 语言中常用的多行字符串写法。</p>
+                    <pre><code class="language-cpp">#include&lt;stdio.h&gt;
+int main() {
+    printf(
+    "                ********\n"
+    "               ************\n"
+    "               ####....#.\n"
+    "             #..###.....##....\n"
+    "             ###.......######              ###            ###\n"
+    "                ...........               #...#          #...#\n"
+    "               ##*#######                 #.#.#          #.#.#\n"
+    "            ####*******######             #.#.#          #.#.#\n"
+    "           ...#***.****.*###....          #...#          #...#\n"
+    "           ....**********##.....           ###            ###\n"
+    "           ....****    *****....\n"
+    "             ####        ####\n"
+    "           ######        ######\n"
+    "##############################################################\n"
+    "#...#......#.##...#......#.##...#......#.##------------------#\n"
+    "###########################################------------------#\n"
+    "#..#....#....##..#....#....##..#....#....#####################\n"
+    "##########################################    #----------#\n"
+    "#.....#......##.....#......##.....#......#    #----------#\n"
+    "##########################################    #----------#\n"
+    "#.#..#....#..##.#..#....#..##.#..#....#..#    #----------#\n"
+    "##########################################    ############\n"
+    );
+    return 0;
+}</code></pre>
+                    <hr />
+                    <p>文言题解，参考了楼下的做法。</p>
+                    <pre><code>吾有一數。曰二十二。名之曰「高」。吾有一數。曰六十二。名之曰「宽」。
+吾有一列。名之曰「图」。
+吾有一言。曰「「#」」。名之曰「井」。吾有一言。曰「「.」」。名之曰「点」。
+吾有一言。曰「「-」」。名之曰「减」。吾有一言。曰「「 」」。名之曰「空」。
+吾有一言。曰「「*」」。名之曰「星」。
+
+吾有一術。名之曰「画」。欲行是術。必先得五數。曰「甲一」。曰「乙一」。曰「甲二」。曰「乙二」。曰「字」。乃行是術曰。
+    減「甲二」以「甲一」。加其以一。名之曰「甲」。
+    減「乙二」以「乙一」。加其以一。名之曰「乙」。
+    為是「甲」遍。
+        吾有一數。曰「乙一」。名之曰「丙」。
+        為是「乙」遍。
+            乘「甲一」以「宽」。加其以「丙」。加其以一。名之曰「丁」。
+            昔之「图」之「丁」者。今「字」是矣。
+            加「丙」以一。昔之「丙」者。今其是矣。
+        云云。
+        加「甲一」以一。昔之「甲一」者。今其是矣。
+    云云。
+是謂「画」之術也。
+
+吾有一術。名之曰「画点」。欲行是術。必先得三數。曰「甲」。曰「乙」。曰「字」。乃行是術曰。
+    施「画」於「甲」。於「乙」。於「甲」。於「乙」。於「字」。
+是謂「画点」之術也。
+
+吾有一術。名之曰「画地」。欲行是術。必先得二數。曰「甲」。曰「乙」。乃行是術曰。
+    加「甲」以八。名之曰「丙」。加「乙」以十三。名之曰「丁」。
+    施「画」於「甲」。於「乙」。於「丙」。於「丁」。於「井」。
+    吾有一列。名之曰「戊」。充「戊」以一。以三。以五。以七。
+    凡「戊」中之「己」。
+        加「己」以「甲」。名之曰「庚」。加「乙」以一。名之曰「丙」。加「乙」以十二。名之曰「丁」。
+        施「画」於「庚」。於「丙」。於「庚」。於「丁」。於「点」。
+    云云。
+    加「甲」以一。名之曰「丙」。加「乙」以四。名之曰「丁」。施「画点」於「丙」。於「丁」。於「井」。
+    加「甲」以一。名之曰「丙」。加「乙」以十一。名之曰「丁」。施「画点」於「丙」。於「丁」。於「井」。
+    加「甲」以三。名之曰「丙」。加「乙」以三。名之曰「丁」。施「画点」於「丙」。於「丁」。於「井」。
+    加「甲」以三。名之曰「丙」。加「乙」以八。名之曰「丁」。施「画点」於「丙」。於「丁」。於「井」。
+    加「甲」以五。名之曰「丙」。加「乙」以六。名之曰「丁」。施「画点」於「丙」。於「丁」。於「井」。
+    加「甲」以七。名之曰「丙」。加「乙」以二。名之曰「丁」。施「画点」於「丙」。於「丁」。於「井」。
+    加「甲」以七。名之曰「丙」。加「乙」以五。名之曰「丁」。施「画点」於「丙」。於「丁」。於「井」。
+    加「甲」以七。名之曰「丙」。加「乙」以十。名之曰「丁」。施「画点」於「丙」。於「丁」。於「井」。
+是謂「画地」之術也。
+
+吾有一術。名之曰「画島」。欲行是術。必先得二數。曰「甲」。曰「乙」。乃行是術曰。
+    加「甲」以三。名之曰「丙」。加「乙」以十九。名之曰「丁」。
+    施「画」於「甲」。於「乙」。於「丙」。於「丁」。於「井」。
+    加「甲」以一。名之曰「丙」。加「乙」以一。名之曰「丁」。加「甲」以二。名之曰「戊」。加「乙」以十八。名之曰「己」。
+    施「画」於「丙」。於「丁」。於「戊」。於「己」。於「减」。
+    加「甲」以四。名之曰「丙」。加「乙」以四。名之曰「丁」。加「甲」以八。名之曰「戊」。加「乙」以十五。名之曰「己」。
+    施「画」於「丙」。於「丁」。於「戊」。於「己」。於「井」。
+    加「甲」以四。名之曰「丙」。加「乙」以五。名之曰「丁」。加「甲」以七。名之曰「戊」。加「乙」以十四。名之曰「己」。
+    施「画」於「丙」。於「丁」。於「戊」。於「己」。於「减」。
+是謂「画島」之術也。
+
+吾有一術。名之曰「画币」。欲行是術。必先得二數。曰「甲」。曰「乙」。乃行是術曰。
+    加「甲」以五。名之曰「丙」。加「乙」以四。名之曰「丁」。
+    施「画」於「甲」。於「乙」。於「丙」。於「丁」。於「井」。
+    加「甲」以一。名之曰「丙」。加「乙」以一。名之曰「丁」。加「甲」以四。名之曰「戊」。加「乙」以三。名之曰「己」。
+    施「画」於「丙」。於「丁」。於「戊」。於「己」。於「点」。
+    加「甲」以二。名之曰「丙」。加「乙」以二。名之曰「丁」。加「甲」以三。名之曰「戊」。加「乙」以二。名之曰「己」。
+    施「画」於「丙」。於「丁」。於「戊」。於「己」。於「井」。
+    施「画点」於「甲」。於「乙」。於「空」。
+    加「甲」以五。名之曰「丙」。施「画点」於「丙」。於「乙」。於「空」。
+    加「乙」以四。名之曰「丙」。施「画点」於「甲」。於「丙」。於「空」。
+    加「甲」以五。名之曰「丙」。加「乙」以四。名之曰「丁」。施「画点」於「丙」。於「丁」。於「空」。
+是謂「画币」之術也。
+
+吾有一術。名之曰「画人」。欲行是術。必先得二數。曰「甲」。曰「乙」。乃行是術曰。
+    加「乙」以五。名之曰「丙」。加「乙」以十二。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「星」。
+    加「甲」以一。昔之「甲」者。今其是矣。
+    加「乙」以四。名之曰「丙」。加「乙」以十五。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「星」。
+    加「甲」以一。昔之「甲」者。今其是矣。
+    加「乙」以四。名之曰「丙」。加「乙」以七。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「井」。
+    加「乙」以八。名之曰「丙」。加「乙」以十三。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「点」。
+    加「乙」以十二。名之曰「丙」。施「画点」於「甲」。於「丙」。於「井」。
+    加「甲」以一。昔之「甲」者。今其是矣。
+    加「乙」以二。名之曰「丙」。加「乙」以十四。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「井」。
+    加「乙」以三。名之曰「丙」。加「乙」以四。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「点」。
+    加「乙」以八。名之曰「丙」。加「乙」以十二。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「点」。
+    加「乙」以十五。名之曰「丙」。加「乙」以十八。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「点」。
+    加「甲」以一。昔之「甲」者。今其是矣。
+    加「乙」以二。名之曰「丙」。加「乙」以十七。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「井」。
+    加「乙」以五。名之曰「丙」。加「乙」以十一。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「点」。
+    加「甲」以一。昔之「甲」者。今其是矣。
+    加「乙」以五。名之曰「丙」。加「乙」以十五。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「点」。
+    加「甲」以一。昔之「甲」者。今其是矣。
+    加「乙」以四。名之曰「丙」。加「乙」以十三。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「井」。
+    加「乙」以六。名之曰「丙」。施「画点」於「甲」。於「丙」。於「星」。
+    加「甲」以一。昔之「甲」者。今其是矣。
+    加「乙」以一。名之曰「丙」。加「乙」以十七。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「井」。
+    加「乙」以五。名之曰「丙」。加「乙」以十一。名之曰「丁」。施「画」於「甲」。於「丙」。於「甲」。於「丁」。於「星」。
+    加「甲」以一。昔之「甲」者。今其是矣。
+    加「甲」以二。名之曰「丙」。加「乙」以二十。名之曰「丁」。施「画」於「甲」。於「乙」。於「丙」。於「丁」。於「点」。
+    加「乙」以四。名之曰「丙」。加「甲」以二。名之曰「丁」。加「乙」以十六。名之曰「戊」。施「画」於「甲」。於「丙」。於「丁」。於「戊」。於「星」。
+    加「乙」以三。名之曰「丙」。施「画点」於「甲」。於「丙」。於「井」。
+    加「乙」以十四。名之曰「丙」。加「甲」以一。名之曰「丁」。加「乙」以十六。名之曰「戊」。施「画」於「甲」。於「丙」。於「丁」。於「戊」。於「井」。
+    加「甲」以一。名之曰「丙」。加「乙」以十六。名之曰「丁」。施「画点」於「丙」。於「丁」。於「点」。
+    加「甲」以二。名之曰「丙」。加「乙」以八。名之曰「丁」。加「甲」以二。名之曰「戊」。加「乙」以十一。名之曰「己」。
+    施「画」於「丙」。於「丁」。於「戊」。於「己」。於「空」。
+    加「乙」以七。名之曰「丙」。施「画点」於「甲」。於「丙」。於「点」。
+    加「乙」以十二。名之曰「丙」。施「画点」於「甲」。於「丙」。於「点」。
+    加「甲」以三。名之曰「丙」。加「甲」以四。名之曰「丁」。加「乙」以十九。名之曰「戊」。
+    施「画」於「丙」。於「乙」。於「丁」。於「戊」。於「井」。
+    加「甲」以三。名之曰「丙」。加「乙」以六。名之曰「丁」。加「甲」以四。名之曰「戊」。加「乙」以十三。名之曰「己」。
+    施「画」於「丙」。於「丁」。於「戊」。於「己」。於「空」。
+    加「甲」以三。名之曰「丙」。加「甲」以三。名之曰「丁」。加「乙」以一。名之曰「戊」。
+    施「画」於「丙」。於「乙」。於「丁」。於「戊」。於「空」。
+    加「甲」以三。名之曰「丙」。加「乙」以十八。名之曰「丁」。加「甲」以三。名之曰「戊」。加「乙」以十九。名之曰「己」。
+    施「画」於「丙」。於「丁」。於「戊」。於「己」。於「空」。
+是謂「画人」之術也。
+
+施「画人」於一。於十二。
+施「画地」於十四。於一。施「画地」於十四。於十五。施「画地」於十四。於二十九。
+施「画島」於十四。於四十三。
+施「画币」於五。於四十三。施「画币」於五。於五十八。
+
+吾有一數。曰一。名之曰「甲」。
+為是「高」遍。
+    吾有一言。曰「「」」。名之曰「果」。
+    吾有一數。曰一。名之曰「乙」。
+    為是「宽」遍。
+        乘「甲」以「宽」。加其以「乙」。加其以一。名之曰「丙」。
+        夫「图」之「丙」。名之曰「丁」。
+        若「丁」等於變者。昔之「丁」者。今「空」是矣也。
+        加「果」以「丁」。昔之「果」者。今其是矣。
+        加「乙」以一。昔之「乙」者。今其是矣。
+    云云。
+    吾有一言。曰「果」。書之。
+    加「甲」以一。昔之「甲」者。今其是矣。
+云云。</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-g lg-main-content solution-block" data-blog-id="24345">
+        <div class="am-u-md-4 am-u-lg-3 lg-right am-hide-sm">
+            <section class="am-panel am-panel-default lg-summary">
+                <div class="lg-summary-content">
+                    <h2>
+                        评论
+                        <span class="lg-right">
+                                <a class="comment-page-switch" data-forward="-1"><i class="am-icon-chevron-left" style="display: none;"></i></a>
+                                <a class="comment-page-switch" data-forward="1"><i class="am-icon-chevron-right" style="display: none;"></i></a>
+                            </span>
+                    </h2>
+                    <ul class="am-list am-list-static am-list-border am-list-striped"
+                        style="position: relative;" data-comment-count="290">
+                        <li>
+                            <span class="lg-small">char32_t</span><br>
+                            %%%
+                            火钳刘明
+                        </li>
+                        <li>
+                            <span class="lg-small">chen_xy</span><br>
+                            前排兹嗞
+                        </li>
+                        <li>
+                            <span class="lg-small">Macrohard</span><br>
+                            刺激
+                        </li>
+                        <li>
+                            <span class="lg-small">МiсDZ</span><br>
+                            6666，强大
+                        </li>
+                        <li>
+                            <span class="lg-small">4SunnyH</span><br>
+                            我一直以为只有a+bproblem里有神犇
+                        </li>
+                        <li>
+                            <span class="lg-small">Modest_Man</span><br>
+                            dalao膜拜
+                        </li>
+                        <li>
+                            <span class="lg-small">Agakiss</span><br>
+                            dalao膜拜
+                        </li>
+                        <li>
+                            <span class="lg-small">石哈哈</span><br>
+                            dalao膜拜
+                        </li>
+                        <li>
+                            <span class="lg-small">WuShangxuan</span><br>
+                            666
+                        </li>
+                        <li>
+                            <span class="lg-small">KajKeusaka</span><br>
+                            %%%
+                        </li>
+                        <div class="fadeout" style="display: none;">
+                            <div class="comment-show-more"> 展开更多</div>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="am-u-md-8 am-u-lg-9 lg-right">
+            <div class="lg-content-left">
+                <div class="lg-article am-g" style="min-height: 350px;">
+                        <span class="lg-small">作者: <a class='lg-fg-gray' href="/user/65674"  target="_blank">2017gangbazi</a>
+                            更新时间: 2018-02-01 21:21
+                        </span>
+                    <a class="lg-small" href="https://www.luogu.com.cn/blog/gangbazi/solution-p1000" target="_blank">&nbsp在Ta的博客查看</a>
+                    <a class="lg-small" style="cursor:pointer" name="report" data-report-id="24345">
+                        举报
+                    </a>
+
+                    <span data-blog-id="24345" data-vote-value="-1"
+                          class="thumb-down am-icon-thumbs-o-down lg-right vote ">
+                        </span>
+                    <span class="lg-right">&nbsp;&nbsp;</span>
+                    <span data-blog-id="24345" class="lg-right vote-count">823</span>
+                    <span class="lg-right">&nbsp;</span>
+                    <span data-blog-id="24345" data-vote-value="1"
+                          class="thumb-up am-icon-thumbs-o-up lg-right vote ">
+                        </span>
+                    <hr>
+                    <p>不多说，非原创；
+                        注意！非原创！
+                        看题解里没有这个大佬写的题解，就来发一下吧</p>
+                    <pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int mp[100][100];
+int last[100];
+int n = 22, m = 62;
+// 在[x1-x2, y1-y2]绘制ch
+void draw(int x1, int y1, int x2, int y2, char ch = '#'){
+    for(int i = x1; i &lt;= x2; i++)
+        for(int j = y1; j &lt;= y2; j++)
+            mp[i][j] = ch;
+}
+// 在[x1, y1]绘制ch
+void draw(int x1, int y1, char ch = '#'){
+    draw(x1, y1, x1, y1, ch);
+}
+// 以[x, y]为左上角绘制泥土
+void drawland(int x, int y){
+    draw(x, y, x+8, y+13);
+    for(int i = x+1; i &lt; x+8; i+=2)
+        draw(i, y+1, i, y+12, '.');
+    draw(x+1, y+4); draw(x+1, y+11);
+    draw(x+3, y+3); draw(x+3, y+8);
+    draw(x+5, y+6); draw(x+7, y+2);
+    draw(x+7, y+5); draw(x+7, y+10);
+}
+// 以[x, y]为左上角绘制小岛
+void drawisland(int x, int y){
+    draw(x, y, x+3, y+19);
+    draw(x+1, y+1, x+2, y+18, '-');
+    draw(x+4, y+4, x+8, y+15);
+    draw(x+4, y+5, x+7, y+14, '-');
+}
+// 以[x, y]为左上角绘制金币
+void drawcoin(int x, int y){
+    draw(x, y, x+5, y+4);
+    draw(x+1, y+1, x+4, y+3, '.');
+    draw(x+2, y+2, x+3, y+2);
+    draw(x, y, ' '); draw(x+5, y, ' ');
+    draw(x, y+4, ' '); draw(x+5, y+4, ' ');
+}
+// 以[x, y]为左上角绘制马里奥
+void drawman(int x, int y){
+    draw(x, y+5, x, y+12, '*'); x++;
+    draw(x, y+4, x, y+15, '*'); x++;
+    draw(x, y+4, x, y+7); draw(x, y+8, x, y+13, '.'); draw(x, y+12); x++;
+    draw(x, y+2, x, y+14); draw(x, y+3, x, y+4, '.');
+    draw(x, y+8, x, y+12, '.'); draw(x, y+15, x, y+18, '.'); x++;
+    draw(x, y+2, x, y+17); draw(x, y+5, x, y+11, '.'); x++;
+    draw(x, y+5, x, y+15, '.'); x++;
+    draw(x, y+4, x, y+13); draw(x, y+6, '*'); x++;
+    draw(x, y+1, x, y+17); draw(x, y+5, x, y+11, '*'); x++;
+    draw(x, y, x+2, y+20, '.'); draw(x, y+4, x+2, y+16, '*');
+    draw(x, y+3); draw(x, y+14, x+1, y+16); draw(x+1, y+16, '.');
+    draw(x+2, y+8, x+2, y+11, ' '); draw(x, y+7, '.'); draw(x, y+12, '.');
+    draw(x+3, y, x+4, y+19); draw(x+3, y+6, x+4, y+13, ' ');
+    draw(x+3, y, x+3, y+1, ' '); draw(x+3, y+18, x+3, y+19, ' ');
+}
+// 打印输出
+void printscreen(){
+    for(int i = 1; i &lt;= n; i++){
+        last[i] = m;
+        while(mp[i][last[i]] == ' ')
+            last[i]--;
+    }
+    for(int i = 1; i &lt;= n; i++,puts(""))
+        for(int j = 1; j &lt;= last[i]; j++)
+            putchar(mp[i][j]);
+}
+int main(){
+    for(int i = 1; i &lt;= n; i++)
+        for(int j = 1; j &lt;= m; j++)
+            mp[i][j] = ' ';
+    // 绘制人
+    drawman(1, 12);
+    // 绘制他脚下的三块泥土
+    drawland(14, 1); drawland(14, 15); drawland(14, 29);
+    // 绘制金币下面的那个岛屿
+    drawisland(14, 43);
+    // 绘制两个金币
+    drawcoin(5, 43); drawcoin(5, 58);
+    // 输出
+    printscreen();
+    return 0;
+}</code></pre>
+                    <pre><code></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-g lg-main-content solution-block" data-blog-id="44224">
+        <div class="am-u-md-4 am-u-lg-3 lg-right am-hide-sm">
+            <section class="am-panel am-panel-default lg-summary">
+                <div class="lg-summary-content">
+                    <h2>
+                        评论
+                        <span class="lg-right">
+                                <a class="comment-page-switch" data-forward="-1"><i class="am-icon-chevron-left" style="display: none;"></i></a>
+                                <a class="comment-page-switch" data-forward="1"><i class="am-icon-chevron-right" style="display: none;"></i></a>
+                            </span>
+                    </h2>
+                    <ul class="am-list am-list-static am-list-border am-list-striped"
+                        style="position: relative;" data-comment-count="235">
+                        <li>
+                            <span class="lg-small">magical</span><br>
+                            我觉得你有当老师的天赋
+                        </li>
+                        <li>
+                            <span class="lg-small">Owen_szr</span><br>
+                            同感同感
+                        </li>
+                        <li>
+                            <span class="lg-small">Oak_limy</span><br>
+                            希望你也能多讲点难题
+                        </li>
+                        <li>
+                            <span class="lg-small">hdhd</span><br>
+                            强啊  Orz
+                        </li>
+                        <li>
+                            <span class="lg-small">dblark</span><br>
+                            陈独秀同学请你坐下
+                        </li>
+                        <li>
+                            <span class="lg-small">张以成</span><br>
+                            同感同感,可不可以shoutdown -s 一下？
+                        </li>
+                        <li>
+                            <span class="lg-small">闸蟹的大钳子</span><br>
+                            哈，同学你很有意思啊~~  :-)
+                        </li>
+                        <li>
+                            <span class="lg-small">铃铛</span><br>
+                            哈哈哈
+
+                        </li>
+                        <li>
+                            <span class="lg-small">Lazy担当CJX</span><br>
+                            同样是九年义务教育，为何你如此优秀
+                        </li>
+                        <li>
+                            <span class="lg-small">_xcc_</span><br>
+                            秀
+
+                        </li>
+                        <div class="fadeout" style="display: none;">
+                            <div class="comment-show-more"> 展开更多</div>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="am-u-md-8 am-u-lg-9 lg-right">
+            <div class="lg-content-left">
+                <div class="lg-article am-g" style="min-height: 350px;">
+                        <span class="lg-small">作者: <a class='lg-fg-bluelight' href="/user/87180"  target="_blank">靳皓旭</a>
+                            更新时间: 2018-06-18 01:08
+                        </span>
+                    <a class="lg-small" href="https://www.luogu.com.cn/blog/stepbystep/cc-dai-ni-zou-jin-bian-cheng-shi-jie-p1000-post" target="_blank">&nbsp在Ta的博客查看</a>
+                    <a class="lg-small" style="cursor:pointer" name="report" data-report-id="44224">
+                        举报
+                    </a>
+
+                    <span data-blog-id="44224" data-vote-value="-1"
+                          class="thumb-down am-icon-thumbs-o-down lg-right vote ">
+                        </span>
+                    <span class="lg-right">&nbsp;&nbsp;</span>
+                    <span data-blog-id="44224" class="lg-right vote-count">431</span>
+                    <span class="lg-right">&nbsp;</span>
+                    <span data-blog-id="44224" data-vote-value="1"
+                          class="thumb-up am-icon-thumbs-o-up lg-right vote ">
+                        </span>
+                    <hr>
+                    <p>大家好，我是靳皓旭，从今天起我就要给大家讲述我的编程故事，废话不多说，让我们从第一道题开始吧！</p>
+                    <hr />
+                    <p>首先我们看这道题的题目“超级玛丽游戏”，有没有被吓到，第一道题就让我们写个游戏出来。</p>
+                    <p>结果点进去一看，顿时觉得这道题是在开玩笑。好了，让我们分析一下题目。</p>
+                    <p>**题目背景</p>
+                    <p>本题是洛谷的试机题目，可以帮助了解洛谷的使用。
+                        建议完成本题目后继续尝试P1001、P1008.**</p>
+                    <p>看背景貌似好简单耶，看我的厉害。接着往下看输入输出，一脸蒙圈。什么鬼，连个样例都没有，仔细一看描述，顿时豁然开朗。</p>
+                    <p>接着打开软件开始打代码，让我们看一下这道题的关键，主要是用printf函数来吧描述里那一堆'＃''*''-''.'输出，但是注意啦！这里一定不要少输出空格，不然就会卡住，然后心态炸了。没错，我第一次做写了半天才过，比我聪明的你们一定要细心哦。
+                        这就是我写的代码，手残见谅</p>
+                    <pre><code class="language-cpp">#include&lt;stdio.h&gt;
+int main()
+{
+ printf("                ********\n");
+ printf("               ************\n");
+ printf("               ####....#.\n");
+ printf("             #..###.....##....\n");
+ printf("             ###.......######              ###            ###\n");
+ printf("                ...........               #...#          #...#\n");
+ printf("               ##*#######                 #.#.#          #.#.#\n");
+ printf("            ####*******######             #.#.#          #.#.#\n");
+ printf("           ...#***.****.*###....          #...#          #...#\n");
+ printf("           ....**********##.....           ###            ###\n");
+ printf("           ....****    *****....\n");
+ printf("             ####        ####\n");
+ printf("           ######        ######\n");
+ printf("##############################################################\n");
+ printf("#...#......#.##...#......#.##...#......#.##------------------#\n");
+ printf("###########################################------------------#\n");
+ printf("#..#....#....##..#....#....##..#....#....#####################\n");
+ printf("##########################################    #----------#\n");
+ printf("#.....#......##.....#......##.....#......#    #----------#\n");
+ printf("##########################################    #----------#\n");
+ printf("#.#..#....#..##.#..#....#..##.#..#....#..#    #----------#\n");
+ printf("##########################################    ############\n");
+ return 0;
+} </code></pre>
+                    <p>这里我们来学习一下这个c语言中非常常用并且很重要的头文件：stdio.h</p>
+                    <p>看我们专业百科说的：一般地，在C语言或C++中，会把用来#include的文件的扩展名叫 .h，称其为头文件。 #include文件的目的就是把多个编译单元（也就是c或者cpp文件）公用的内容，单独放在一个文件里减少整体代码尺寸；或者提供跨工程公共代码。</p>
+                    <p>其实很简单，stdio就是standard input and output意思是标准输入输出。膜拜我吧，看我的英语多好。</p>
+                    <p>那么我们常用的函数就有printf（输出）和scanf（输入），其格式分别为：printf(&quot;输入数据类型&quot;,输入数据变量名称);（别忘了加分号）
+                        scanf(&quot;输入数据类型&quot;,&amp;输入数据变量名称&quot;);（别忘记地址符（&amp;）还有分号哦）</p>
+                    <p>今天的讲解就到这里，是不是觉得收获满满呢，别忘了消化吸收知识点哦。
+                        我是靳皓旭，下次见哦！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-g lg-main-content solution-block" data-blog-id="35853">
+        <div class="am-u-md-4 am-u-lg-3 lg-right am-hide-sm">
+            <section class="am-panel am-panel-default lg-summary">
+                <div class="lg-summary-content">
+                    <h2>
+                        评论
+                        <span class="lg-right">
+                                <a class="comment-page-switch" data-forward="-1"><i class="am-icon-chevron-left" style="display: none;"></i></a>
+                                <a class="comment-page-switch" data-forward="1"><i class="am-icon-chevron-right" style="display: none;"></i></a>
+                            </span>
+                    </h2>
+                    <ul class="am-list am-list-static am-list-border am-list-striped"
+                        style="position: relative;" data-comment-count="49">
+                        <li>
+                            <span class="lg-small">constructor</span><br>
+                            顺便喜闻乐见地嘲讽一波楼下的P党
+
+                        </li>
+                        <li>
+                            <span class="lg-small">焰羽</span><br>
+                            后悔学c++了，还不如c++11
+                        </li>
+                        <li>
+                            <span class="lg-small">yuanhaoxuan</span><br>
+                            @焰羽:没什么好后悔的，多学点也好，c++11也不过就是c++的进阶，会了c++，就会了c++ 11；没什么大不了的。
+                        </li>
+                        <li>
+                            <span class="lg-small">constructor</span><br>
+                            楼上是把multithread另论吗？
+                        </li>
+                        <li>
+                            <span class="lg-small">МiсDZ</span><br>
+                            orz
+
+                        </li>
+                        <li>
+                            <span class="lg-small">ScreaM</span><br>
+                            std::thread设计的很失败
+                        </li>
+                        <li>
+                            <span class="lg-small">ScreaM</span><br>
+                            C++11
+                        </li>
+                        <li>
+                            <span class="lg-small">constructor</span><br>
+                            @ScreaM 这都什么理论，理由呢？
+                        </li>
+                        <li>
+                            <span class="lg-small">ScreaM</span><br>
+                            和析构函数有关
+                        </li>
+                        <li>
+                            <span class="lg-small">constructor</span><br>
+                            @ScreaM ISO至今为止没有关于std::thread的缺陷报告（至少我没看到）。以及std::thread到现在也没有被改动。（仅指线程对象）
+                        </li>
+                        <div class="fadeout" style="display: none;">
+                            <div class="comment-show-more"> 展开更多</div>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="am-u-md-8 am-u-lg-9 lg-right">
+            <div class="lg-content-left">
+                <div class="lg-article am-g" style="min-height: 350px;">
+                        <span class="lg-small">作者: <a class='lg-fg-gray' href="/user/56461"  target="_blank">constructor</a>
+                            更新时间: 2018-04-16 15:54
+                        </span>
+                    <a class="lg-small" href="https://www.luogu.com.cn/blog/SuperConstructor/solution-p1000" target="_blank">&nbsp在Ta的博客查看</a>
+                    <a class="lg-small" style="cursor:pointer" name="report" data-report-id="35853">
+                        举报
+                    </a>
+
+                    <span data-blog-id="35853" data-vote-value="-1"
+                          class="thumb-down am-icon-thumbs-o-down lg-right vote ">
+                        </span>
+                    <span class="lg-right">&nbsp;&nbsp;</span>
+                    <span data-blog-id="35853" class="lg-right vote-count">252</span>
+                    <span class="lg-right">&nbsp;</span>
+                    <span data-blog-id="35853" data-vote-value="1"
+                          class="thumb-up am-icon-thumbs-o-up lg-right vote ">
+                        </span>
+                    <hr>
+                    <p>居然全luogu真的没有会用黑科技的。。
+                        C++11 <code>raw string literal</code> 技术，让你体会复制粘贴的恐惧</p>
+                    <pre><code class="language-cpp">#include&lt;iostream&gt;
+int main()
+{
+    std::cout&lt;&lt;R"(                ********
+               ************
+               ####....#.
+             #..###.....##....
+             ###.......######              ###            ###
+                ...........               #...#          #...#
+               ##*#######                 #.#.#          #.#.#
+            ####*******######             #.#.#          #.#.#
+           ...#***.****.*###....          #...#          #...#
+           ....**********##.....           ###            ###
+           ....****    *****....
+             ####        ####
+           ######        ######
+##############################################################
+#...#......#.##...#......#.##...#......#.##------------------#
+###########################################------------------#
+#..#....#....##..#....#....##..#....#....#####################
+##########################################    #----------#
+#.....#......##.....#......##.....#......#    #----------#
+##########################################    #----------#
+#.#..#....#..##.#..#....#..##.#..#....#..#    #----------#
+##########################################    ############ )";
+}</code></pre>
+                    <p><strong>EDIT</strong>
+                        看上去大家很喜欢原始字符串的操作，所以我加入了别的语言（刚好萌con会的四种语言里有三种是有这种操作的（Java<del>去死吧</del>））</p>
+                    <h1>C#:</h1>
+                    <pre><code class="language-cpp">using System;
+namespace Luogu
+{
+    class Algo{
+        public static void Main()
+        {
+            Console.Write(@"                ********
+               ************
+               ####....#.
+             #..###.....##....
+             ###.......######              ###            ###
+                ...........               #...#          #...#
+               ##*#######                 #.#.#          #.#.#
+            ####*******######             #.#.#          #.#.#
+           ...#***.****.*###....          #...#          #...#
+           ....**********##.....           ###            ###
+           ....****    *****....
+             ####        ####
+           ######        ######
+##############################################################
+#...#......#.##...#......#.##...#......#.##------------------#
+###########################################------------------#
+#..#....#....##..#....#....##..#....#....#####################
+##########################################    #----------#
+#.....#......##.....#......##.....#......#    #----------#
+##########################################    #----------#
+#.#..#....#..##.#..#....#..##.#..#....#..#    #----------#
+##########################################    ############");
+        }
+    }
+}</code></pre>
+                    <h1>python3:</h1>
+                    <p>python3可以选择多行字符串</p>
+                    <pre><code class="language-python">print("""                ********
+               ************
+               ####....#.
+             #..###.....##....
+             ###.......######              ###            ###
+                ...........               #...#          #...#
+               ##*#######                 #.#.#          #.#.#
+            ####*******######             #.#.#          #.#.#
+           ...#***.****.*###....          #...#          #...#
+           ....**********##.....           ###            ###
+           ....****    *****....
+             ####        ####
+           ######        ######
+##############################################################
+#...#......#.##...#......#.##...#......#.##------------------#
+###########################################------------------#
+#..#....#....##..#....#....##..#....#....#####################
+##########################################    #----------#
+#.....#......##.....#......##.....#......#    #----------#
+##########################################    #----------#
+#.#..#....#..##.#..#....#..##.#..#....#..#    #----------#
+##########################################    ############""")</code></pre>
+                    <p>以上代码经过亲测，可放心食用。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-g lg-main-content solution-block" data-blog-id="68349">
+        <div class="am-u-md-4 am-u-lg-3 lg-right am-hide-sm">
+            <section class="am-panel am-panel-default lg-summary">
+                <div class="lg-summary-content">
+                    <h2>
+                        评论
+                        <span class="lg-right">
+                                <a class="comment-page-switch" data-forward="-1"><i class="am-icon-chevron-left" style="display: none;"></i></a>
+                                <a class="comment-page-switch" data-forward="1"><i class="am-icon-chevron-right" style="display: none;"></i></a>
+                            </span>
+                    </h2>
+                    <ul class="am-list am-list-static am-list-border am-list-striped"
+                        style="position: relative;" data-comment-count="74">
+                        <li>
+                            <span class="lg-small">心水湛清</span><br>
+                            %%%
+                        </li>
+                        <li>
+                            <span class="lg-small">我很辣ji看头像</span><br>
+                            感觉所有人当中你才是最强大的
+                        </li>
+                        <li>
+                            <span class="lg-small">Python爱好者</span><br>
+                            %一下
+                        </li>
+                        <li>
+                            <span class="lg-small">Kizuna_AI</span><br>
+                            php最牛逼@！
+                        </li>
+                        <li>
+                            <span class="lg-small">Martin_MHT</span><br>
+                            %%%
+                        </li>
+                        <li>
+                            <span class="lg-small">火之意志</span><br>
+                            %%%
+                        </li>
+                        <li>
+                            <span class="lg-small">B_Z_B_Y</span><br>
+                            被抢先了qwq（PHP强大
+                        </li>
+                        <li>
+                            <span class="lg-small">Crowded</span><br>
+                            天，这真的是php天下第一啊。
+                        </li>
+                        <li>
+                            <span class="lg-small">ForkΨKillet</span><br>
+                            强！
+                        </li>
+                        <li>
+                            <span class="lg-small">SteveFang</span><br>
+                            NB
+                        </li>
+                        <div class="fadeout" style="display: none;">
+                            <div class="comment-show-more"> 展开更多</div>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="am-u-md-8 am-u-lg-9 lg-right">
+            <div class="lg-content-left">
+                <div class="lg-article am-g" style="min-height: 350px;">
+                        <span class="lg-small">作者: <a class='lg-fg-gray' href="/user/131615"  target="_blank">mnxxzyf</a>
+                            更新时间: 2018-09-17 20:34
+                        </span>
+                    <a class="lg-small" href="https://www.luogu.com.cn/blog/CLCNTanya/solution-p1000" target="_blank">&nbsp在Ta的博客查看</a>
+                    <a class="lg-small" style="cursor:pointer" name="report" data-report-id="68349">
+                        举报
+                    </a>
+
+                    <span data-blog-id="68349" data-vote-value="-1"
+                          class="thumb-down am-icon-thumbs-o-down lg-right vote ">
+                        </span>
+                    <span class="lg-right">&nbsp;&nbsp;</span>
+                    <span data-blog-id="68349" class="lg-right vote-count">182</span>
+                    <span class="lg-right">&nbsp;</span>
+                    <span data-blog-id="68349" data-vote-value="1"
+                          class="thumb-up am-icon-thumbs-o-up lg-right vote ">
+                        </span>
+                    <hr>
+                    <h1>PHP-最便捷</h1>
+                    <p>这题用PHP来做非常简单。</p>
+                    <pre><code class="language-php">                ********
+               ************
+               ####....#.
+             #..###.....##....
+             ###.......######              ###            ###
+                ...........               #...#          #...#
+               ##*#######                 #.#.#          #.#.#
+            ####*******######             #.#.#          #.#.#
+           ...#***.****.*###....          #...#          #...#
+           ....**********##.....           ###            ###
+           ....****    *****....
+             ####        ####
+           ######        ######
+##############################################################
+#...#......#.##...#......#.##...#......#.##------------------#
+###########################################------------------#
+#..#....#....##..#....#....##..#....#....#####################
+##########################################    #----------#
+#.....#......##.....#......##.....#......#    #----------#
+##########################################    #----------#
+#.#..#....#..##.#..#....#..##.#..#....#..#    #----------#
+##########################################    ############</code></pre>
+                    <p>你没看错，真的是直接粘贴上去就行了</p>
+                    <p>原理的话，PHP标签外字符会被PHP解释器直接输出（常见于HTML和PHP混写，甚至php的if里出现结束标签+HTML+开始标签能够实现选择性输出HTML），因此此题直接将字符画贴源码里直接交(PHP)能过。</p>
+                    <h1>Python-最短代码挑战</h1>
+                    <p>既然PHP直接原文粘贴过了那么别的代码只要带着全文肯定体积是不可能更小了，于是考虑压缩。</p>
+                    <p>考虑到压缩会出现非ASCII字符，于是用BASE64包一层（扩大了1/3文本体积）。</p>
+                    <p>测试了一下gzip/bz2/lzam/Deflate(zlib)/Brotli压缩算法：</p>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;">压缩算法</th>
+                            <th style="text-align: center;">raw</th>
+                            <th style="text-align: center;">gzip</th>
+                            <th style="text-align: center;">bz2</th>
+                            <th style="text-align: center;">lzam</th>
+                            <th style="text-align: center;">Deflate</th>
+                            <th style="text-align: center;">Brotli</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="text-align: center;">大小(byte)</td>
+                            <td style="text-align: center;">1127</td>
+                            <td style="text-align: center;">174</td>
+                            <td style="text-align: center;">207</td>
+                            <td style="text-align: center;">220</td>
+                            <td style="text-align: center;">164</td>
+                            <td style="text-align: center;">154</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>不过由于Brotli不在python原生库里，最后用Deflate</p>
+                    <p><del>最后用python2而不是3省一个括号</del></p>
+                    <pre><code class="language-python">import zlib,base64;print zlib.decompress(base64.b64decode('eJylUkEOwCAIu/sKk95Mxv+fN2AsE0S3xR42sRYqUqtHM5TJfsaBQQyQZ3jTGLp+JcqIjBUMSUMYy1Z6EB1J0hCOrhuywnoeXo4gF5U1I0nxJhc3rKSmH2vDd/Ny+nkMa6I3F7xmallrgvRh0K9L4DzLPLZQ9IY2CdekTKNjwK/qqdwK4J7TeZSa/wxtWKjc3W4VjdKdqt2tsIp2q3Y4AbV3oO4=')).decode()</code></pre>
+                    <p>最终代码长度291字节</p>
+                    <p>或许还有其他更短方案，请高人赐教</p>
+                    <h2>C/C++-最快/内存最小解</h2>
+                    <p>略</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-g lg-main-content">
+        <div class="am-u-md-4 am-u-lg-3 lg-right am-hide-sm">&nbsp;</div>
+        <div class="am-u-md-8 am-u-lg-8 lg-right">
+            <div class="lg-content-left">
+                <div class="lg-article am-g">
+                    <div class="pagination-centered"><ul class="am-pagination am-pagination-centered"><li class="am-active"><a>1</a></li><li><a href="/problemnew/solution/P1000?page=2" data-ci-pagination-page="2">2</a></li><li><a href="/problemnew/solution/P1000?page=3" data-ci-pagination-page="3">3</a></li><li><a href="/problemnew/solution/P1000?page=2" data-ci-pagination-page="2" rel="next">&gt;</a></li></ul></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.luogu.com.cn/css/markDownEditor.css"/>
+
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="report">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">反馈</div>
+            <div class="am-modal-bd">
+                如果你认为某个题解有问题，欢迎向洛谷反馈，以帮助更多的同学。
+                <br><br>
+                <select data-am-selected="{ btnStyle: 'secondary'}" name="reason">
+                    <option value="排版不整齐">排版不整齐</option>
+                    <option value="无意义内容">无法令人理解的无意义内容</option>
+                    <option value="违法内容">违法内容与有害信息</option>
+                    <option value="抄袭">抄袭等侵犯版权的内容</option>
+                    <option value="其他">其他原因（请解释）</option>
+                </select><br><br>
+                请具体说明理由，以增加反馈的可信度。
+                <input type="text" class="am-modal-prompt-input" name="content">
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="lg-alert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd" id="lg-alert-title"></div>
+        <div class="am-modal-bd" id="lg-alert-message"></div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+
+<script src="/js/ace/ace.js"></script>
+
+<script src="https://cdn.luogu.com.cn/js/vendor.js" data-manual></script>
+<script src="https://cdn.luogu.com.cn/js/jsmind.js" data-manual></script>
+<!--
+<script src="https://cdn.luogu.com.cn/js/ajaxfileupload.js" data-manual></script>
+<script src="https://cdn.luogu.com.cn/js/jquery.pjax.js" data-manual></script>
+-->
+
+<!--ajaxfileupload.js highlight.pack.js jquery.pjax.js markDownEditor.js poshytip.js qrcode.min.js-->
+
+<script src="https://cdn.luogu.com.cn/js/amazeui.min.js"></script>
+<script src="https://cdn.luogu.com.cn/js/highcharts.js"></script>
+<script src="https://cdn.luogu.com.cn/js/highcharts-more.js"></script>
+<script src="/static/katex/katex.min.js"></script>
+<script src="/static/katex/contrib/auto-render.min.js"></script>
+<script src="https://cdn.luogu.com.cn/markdown-palettes/markdown-palettes.min.js?ver=20190219"></script>
+<script src="https://cdn.luogu.com.cn/js/luogu3.js?ver=20190724"></script>
+<script>
+    String.prototype.fmt = function() {
+        var args = arguments;
+        return this.replace(/%(\d+)/g, function(m, i) {
+            return args[i];
+        });
+    };
+</script>
+
+<script>
+    var currentCommentPage = {};
+    function getComments($solutionBlock, pageForward, forcePage) {
+        var children = $solutionBlock.children("div");
+        var $comments = $(children[0]);
+        var $commentsContainer = $comments.find("ul");
+
+        var blogId = $solutionBlock.attr('data-blog-id');
+        var currentPage = currentCommentPage.hasOwnProperty(blogId) ? currentCommentPage[blogId] : 1;
+        currentPage = forcePage ? forcePage : (currentPage + pageForward);
+        currentCommentPage[blogId] = currentPage;
+
+        $(".am-icon-chevron-left,.am-icon-chevron-right").hide();
+        $.get("/api/blog/replies/%0?page=%1".fmt(blogId, currentPage), function(resp) {
+            $commentsContainer.attr('data-comment-count', resp.data.count);
+            $commentsContainer.children("li").remove();
+            if(currentPage !== 1) $(".am-icon-chevron-left").show();
+            if(currentPage !== Math.ceil(resp.data.count / 10)) $(".am-icon-chevron-right").show();
+            $(resp.data.result).each(function(i, comment) {
+                var commentElement = $("<li>").text(comment.Content).prepend("<br>").prepend(
+                    $('<span class="lg-small">').text(comment.Author.Username)
+                );
+                commentElement.insertBefore($commentsContainer.children(".fadeout"));
+            });
+        });
+    }
+
+    $(".comment-page-switch").click(function() {
+        var $e = $(this);
+        var forward = parseInt($e.attr('data-forward'));
+        getComments($e.closest(".solution-block"), forward);
+    });
+
+    $(document).ready(function() {
+        $(".solution-block").each(function() {
+            var children = $(this).children("div");
+            var $solution = $(children[1]);
+            var $comments = $(children[0]);
+            var $commentsContainer = $comments.find("ul");
+            var commentCount = parseInt($commentsContainer.attr('data-comment-count'));
+
+            var heightDifference = $comments[0].offsetHeight - $solution[0].offsetHeight;
+
+            if(heightDifference > 0) {
+                $commentsContainer.css('height', '%0px'.fmt($commentsContainer[0].offsetHeight + 4 - heightDifference))
+                    .css("overflow", "hidden").css("cursor", "pointer");
+                $commentsContainer.children(".fadeout").show();
+                $commentsContainer.click(function() {
+                    $commentsContainer.children(".fadeout").hide();
+                    $commentsContainer.css('height', 'auto').css("overflow", "").css("cursor", "");
+                    if(commentCount > 10) $comments.find(".am-icon-chevron-right").show();
+                });
+            } else {
+                if(commentCount > 10) $comments.find(".am-icon-chevron-right").show();
+            }
+        });
+    });
+
+    $("[name=report]").click(function () {
+        var reportID = $(this).attr('data-report-id');
+        $('#report').modal({
+            relatedTarget: this,
+            onConfirm: function (e) {
+                var reason = $('[name=reason]').val();
+                var detail = $('[name=content]').val();
+
+                $.post('/api/report/blog', {
+                    relevantID: reportID,
+                    reason: reason + ' ' + detail
+                }, function (data) {
+                    show_alert("提示", data.data);
+                });
+            }
+        });
+    });
+</script>
+
+<!--script src="//www.recaptcha.net/recaptcha/api.js?hl=zh-CN&render=explicit&onload=renderCaptcha" async defer></script-->
+</body>
+</html>

@@ -15,12 +15,18 @@ public class NodeChain {
 
     private int index;
 
+    private Boolean clearFirst = false;
+
     NodeChain(List<NodeHandler> nodeChainList, int mIndex){
         this.nodeChainList = nodeChainList;
         this.index = mIndex;
     }
 
     public void process(){
+        //执行之前先清空数据库
+        if(index == 0){
+
+        }
         if(index >= nodeChainList.size()){
             return;
         }
@@ -29,9 +35,19 @@ public class NodeChain {
         nodeHandler.handler(next);
     }
 
+    public void setClearFirst(Boolean b){
+        clearFirst = b;
+    }
+
 
     public static class Builder{
         private List<NodeHandler> nodeChainList = new ArrayList<>();
+        private Boolean clearFirst = false;
+
+        public Builder clearFirst(Boolean b){
+            clearFirst = b;
+            return this;
+        }
 
 
         public Builder addNodeBean(@NotNull NodeHandler nodeHandler){
@@ -47,7 +63,9 @@ public class NodeChain {
 
 
         public NodeChain build(){
-            return new NodeChain(nodeChainList,0);
+            NodeChain nodeChain = new NodeChain(nodeChainList,0);
+            nodeChain.setClearFirst(clearFirst);
+            return nodeChain;
         }
     }
 

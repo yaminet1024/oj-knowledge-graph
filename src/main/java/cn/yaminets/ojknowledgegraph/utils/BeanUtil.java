@@ -1,6 +1,7 @@
 package cn.yaminets.ojknowledgegraph.utils;
 
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -11,7 +12,7 @@ public class BeanUtil implements ApplicationContextAware {
     protected static ApplicationContext context;
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@NotNull ApplicationContext applicationContext) throws BeansException {
         context = applicationContext;
     }
 
@@ -20,7 +21,7 @@ public class BeanUtil implements ApplicationContextAware {
     }
 
     public static <T> T getBean(Class<T> t) {
-        return context.getBean(t);//T表示类
+        return context.getBean(t);
     }
 
 }

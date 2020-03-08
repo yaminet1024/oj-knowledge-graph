@@ -16,8 +16,6 @@ public class LuoguServiceImpl implements LuoguService {
 
 
 
-
-
     @Override
     public void update() {
 
@@ -31,6 +29,7 @@ public class LuoguServiceImpl implements LuoguService {
                 .addNodeBean(TagsHandler.class)
                 .addNodeBean(DifficultyHandler.class)
                 .addNodeBean(ProblemHandler.class)
+                .addNodeBean(AnswerHandler.class)
                 .build();
         chain.process();
         logger.info("NodeHandler: 构建图谱结构完成");
