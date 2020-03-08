@@ -40,7 +40,7 @@ public class LuoguTest {
 
     @Test
     public void testFindAllProblem(){
-        answerHandler.handler(null);
+
     }
 
 

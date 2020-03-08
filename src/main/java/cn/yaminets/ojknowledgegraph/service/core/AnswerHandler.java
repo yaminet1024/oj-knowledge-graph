@@ -77,7 +77,6 @@ public class AnswerHandler implements NodeHandler {
 
             }
         }
-        if(chain == null) return;
         chain.process();
     }
 }
