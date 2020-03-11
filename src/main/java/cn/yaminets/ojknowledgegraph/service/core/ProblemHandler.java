@@ -33,7 +33,7 @@ import java.util.Set;
 public class ProblemHandler implements NodeHandler {
 
     private int startPage = 1;
-    private int endPage = 2;
+    private int endPage = 10;
 
     private Logger logger = LoggerFactory.getLogger("ProblemHandler");
 
@@ -67,7 +67,7 @@ public class ProblemHandler implements NodeHandler {
                 e.printStackTrace();
             }finally {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -127,7 +127,7 @@ public class ProblemHandler implements NodeHandler {
             //更新难度节点
             Difficulty difficulty = difficultyRepository.findDifficultyByDifficulty(resultBean.getDifficulty());
             if(difficulty == null){
-                logger.warn("不存在的难度: " + resultBean.getType());
+                logger.warn("不存在的难度: " + resultBean.getDifficulty());
             }else {
                 Set<Problem> problemList = difficulty.getProblemList();
                 if(null == problemList){

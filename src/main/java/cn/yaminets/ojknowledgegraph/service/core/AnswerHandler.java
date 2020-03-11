@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -41,7 +42,7 @@ public class AnswerHandler implements NodeHandler {
                 String url = "https://www.luogu.com.cn/problemnew/solution/" + problem.getPid() + "?page=1";
                 try {
                     Document htmlContent = Jsoup.connect(url).get();
-                    Thread.sleep(2000);
+                    Thread.sleep(100);
                     int pageSize = 1;
                     Elements pageDiv = htmlContent.select(".am-pagination").select("li");
                     if (!pageDiv.isEmpty()) {
@@ -55,12 +56,13 @@ public class AnswerHandler implements NodeHandler {
                     logger.info(problem.getPid() + "页数 " + pageSize);
                     //第三层循环，提取出所有的答案
                     Set<Answer> answerSet = new HashSet<>();
-                    for(int j = 1;j<=pageSize; j++){
+                    //暂时只取第一页的答案，答案太多了
+                    for(int j = 1;j<=1; j++){
                         String answerUrl = "https://www.luogu.com.cn/problemnew/solution/" + problem.getPid() + "?page=" + j;
                         Document answerDocument = Jsoup.connect(answerUrl).get();
-                        Thread.sleep(2000);
+                        Thread.sleep(100);
                         Elements answerDiv = answerDocument.select(".lg-content-left");
-                        logger.info(problem.getPid() + "答案数量 " + answerDiv.size());
+                        logger.info(problem.getPid() + "第" + j +  "页答案数量 " + answerDiv.size());
                         for(Element element: answerDiv){
                             Answer answer = new Answer();
                             answer.setAnswerString(element.outerHtml());
@@ -76,6 +78,7 @@ public class AnswerHandler implements NodeHandler {
                 }
 
             }
+            logger.info("问题图谱构建已完成：" + ((float)i/(float) totalPage*100) + "%");
         }
         chain.process();
     }

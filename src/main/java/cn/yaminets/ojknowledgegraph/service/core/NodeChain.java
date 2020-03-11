@@ -1,6 +1,8 @@
 package cn.yaminets.ojknowledgegraph.service.core;
 
 import cn.yaminets.ojknowledgegraph.utils.BeanUtil;
+import org.neo4j.ogm.session.Session;
+import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +26,10 @@ public class NodeChain {
 
     public void process(){
         //执行之前先清空数据库
-        if(index == 0){
-
+        if(index == 0 && clearFirst){
+            SessionFactory sessionFactory = BeanUtil.getBean(SessionFactory.class);
+            Session session = sessionFactory.openSession();
+            session.purgeDatabase();
         }
         if(index >= nodeChainList.size()){
             return;
@@ -59,7 +63,6 @@ public class NodeChain {
             nodeChainList.add(BeanUtil.getBean(c));
             return this;
         }
-
 
 
         public NodeChain build(){

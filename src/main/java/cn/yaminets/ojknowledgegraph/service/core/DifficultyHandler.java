@@ -26,6 +26,7 @@ public class DifficultyHandler implements NodeHandler {
         logger.info("nodeHandler: 构建[难度]节点 开始");
         //建立难度节点
         Map<Integer,String> difficultyMap = new HashMap<>();
+        difficultyMap.put(0,"暂无评定");
         difficultyMap.put(1,"入门");
         difficultyMap.put(2,"普及-");
         difficultyMap.put(3,"普及/提高-");

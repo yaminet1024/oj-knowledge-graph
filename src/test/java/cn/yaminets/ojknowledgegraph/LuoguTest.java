@@ -10,6 +10,7 @@ import cn.yaminets.ojknowledgegraph.service.core.AnswerHandler;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.neo4j.ogm.cypher.query.CypherQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,8 @@ public class LuoguTest {
     @Autowired
     LuoguTagsRepository tagsRepository;
 
+
+
     @Autowired
     AnswerHandler answerHandler;
 
@@ -47,8 +50,7 @@ public class LuoguTest {
 
     @Test
     public void testFindAllProblem(){
-        List<Tags> tagsList  = tagsRepository.findTagsByNameContains("BFS");
-        logger.info(JSON.toJSONString(tagsList));
+        luoguService.update();
     }
 
 
