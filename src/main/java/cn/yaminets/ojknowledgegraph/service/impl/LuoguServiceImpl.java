@@ -24,8 +24,6 @@ public class LuoguServiceImpl implements LuoguService {
 
 
 
-
-
     @Override
     public void update() {
         Session session = sessionFactory.openSession();

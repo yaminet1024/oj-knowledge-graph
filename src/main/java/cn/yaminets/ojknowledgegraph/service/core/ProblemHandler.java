@@ -33,6 +33,8 @@ import java.util.Set;
 public class ProblemHandler implements NodeHandler {
 
     private int startPage = 1;
+
+    //todo 暂时只取前面10页
     private int endPage = 10;
 
     private Logger logger = LoggerFactory.getLogger("ProblemHandler");
@@ -67,7 +69,7 @@ public class ProblemHandler implements NodeHandler {
                 e.printStackTrace();
             }finally {
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
