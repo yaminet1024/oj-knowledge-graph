@@ -105,14 +105,6 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-kernel -->
-        <dependency>
-            <groupId>org.neo4j</groupId>
-            <artifactId>neo4j-kernel</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-
-
 
 
 
