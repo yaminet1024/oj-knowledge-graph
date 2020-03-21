@@ -1,11 +1,12 @@
 package cn.yaminets.ojknowledgegraph.utils;
 
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.NotNull;
 
 @Component
 public class BeanUtil implements ApplicationContextAware {

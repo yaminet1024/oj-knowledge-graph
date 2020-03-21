@@ -97,12 +97,40 @@
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
-        
 
 
+
+
+        <dependency>
+            <groupId>net.devh</groupId>
+            <artifactId>grpc-spring-boot-starter</artifactId>
+            <version>2.7.0.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.yaminets</groupId>
+            <artifactId>grpc-lib</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-netty-shaded</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-protobuf</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-stub</artifactId>
+                </exclusion>
+
+            </exclusions>
+        </dependency>
 
 
     </dependencies>
+
 
     <build>
         <plugins>
