@@ -1,8 +1,10 @@
 package cn.yaminets.ojknowledgegraph.service.grpc;
 
+
 import cn.yaminets.grpclib.GreeterGrpc;
 import cn.yaminets.grpclib.HelloReply;
 import cn.yaminets.grpclib.HelloRequest;
+import cn.yaminets.grpclib.ResponseEntity;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.slf4j.Logger;
@@ -20,5 +22,6 @@ public class HelloWorldGrpcService extends GreeterGrpc.GreeterImplBase {
         logger.info(request.getName());
         responseObserver.onNext(helloReply);
         responseObserver.onCompleted();
+
     }
 }
