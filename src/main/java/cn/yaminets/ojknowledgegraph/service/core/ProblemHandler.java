@@ -35,7 +35,7 @@ public class ProblemHandler implements NodeHandler {
     private int startPage = 1;
 
     //todo 暂时只取前面10页
-    private int endPage = 10;
+    private int endPage = 1;
 
     private Logger logger = LoggerFactory.getLogger("ProblemHandler");
 

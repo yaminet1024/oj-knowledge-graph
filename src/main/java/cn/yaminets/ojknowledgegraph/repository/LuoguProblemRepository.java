@@ -1,6 +1,9 @@
 package cn.yaminets.ojknowledgegraph.repository;
 
+import cn.yaminets.ojknowledgegraph.pojo.node.Answer;
+import cn.yaminets.ojknowledgegraph.pojo.node.Difficulty;
 import cn.yaminets.ojknowledgegraph.pojo.node.Problem;
+import cn.yaminets.ojknowledgegraph.pojo.node.Tags;
 import org.springframework.data.domain.Page;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.repository.CrudRepository;

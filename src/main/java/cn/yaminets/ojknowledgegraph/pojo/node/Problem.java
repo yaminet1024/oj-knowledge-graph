@@ -34,11 +34,6 @@ public class Problem {
     private String contentHtml;
 
 
-    /**
-     * 问题的答案
-     */
-    @Relationship(type = "题解",direction = Relationship.OUTGOING)
-    private Set<Answer> answers;
 
 //    /**
 //     * 题目难度
