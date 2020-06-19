@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @GrpcService
@@ -38,14 +39,29 @@ public class ProblemGrpcService extends ProblemServiceGrpc.ProblemServiceImplBas
     Logger logger = LoggerFactory.getLogger("ProblemGrpcService");
 
 
+
     @Override
     public void getProblem(ProblemRequest request, StreamObserver<ProblemReply> responseObserver) {
 
-        Page<Problem> tempPageProblem = problemRepository.findAll(PageRequest.of(request.getPage(),  request.getLimit()));
 
-        List<Problem> problemList = tempPageProblem.getContent();
+        List<Problem> allReturnproblemList = new ArrayList<>();
+        for (Problem value : problemRepository.findAll()) {
+            if(value.getTitle().contains(request.getContent())){
+                allReturnproblemList.add(value);
+            }
+        }
+
+        List<Problem> resultList = new ArrayList<>();
+
+        for(int i=request.getPage()*10 ;i<20;i++){
+            if(i<allReturnproblemList.size()){
+                resultList.add(allReturnproblemList.get(i));
+            }
+        }
+
+
         List<ProblemEntity> problemEntities = new ArrayList<>();
-        for(Problem problem: problemList){
+        for(Problem problem: resultList){
             List<AnswerEntity> answerEntities = new ArrayList<>();
 
             List<Answer> answerList = answerRepository.findAnswersByProblemIdV2(problem.getPid());
@@ -89,7 +105,7 @@ public class ProblemGrpcService extends ProblemServiceGrpc.ProblemServiceImplBas
         ProblemReply problemReply = ProblemReply.newBuilder()
                 .addAllProblemList(problemEntities)
                 .setResultMessage(resultMessage)
-                .setPageSize(tempPageProblem.getTotalPages())
+                .setPageSize(allReturnproblemList.size()/20)
                 .build();
 
         responseObserver.onNext(problemReply);
